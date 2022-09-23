@@ -4,7 +4,7 @@
       <img class="hello-picture__img" src="../assets/img/me.jpeg" alt='me'>
     </div>
     <div class="hello-info">
-      <h1 class="hello-info__title">Hello, I'm <span>Artem Skrypka</span></h1>
+      <h1 class="hello-info__title">Hdddello, I'm <span>Artem Skrypka</span></h1>
       <p class="hello-info__subtitle">FrontEnd developer</p>
       <div class="hello-more">
         <div class="hello-more__block"><p class="hello-more__text"><i class="fa fa-birthday-cake"></i>Date of birth:</p> <p class="hello-more__text hello-more__text_result">18.02.1995</p></div>
