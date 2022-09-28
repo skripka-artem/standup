@@ -1,40 +1,22 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../page/Home'
-import Portfolio from '../page/Portfolio'
-import Resume from '../page/Resume'
-import AboutMe from '../page/AboutMe'
-import Contact from '../page/Contact'
+import Vue from "vue";
+import Router from "vue-router";
+import Home from "../page/Home";
+import Afisha from "../page/Afisha";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'Home',
+      path: "/",
+      name: "Головна",
       component: Home
     },
     {
-      path: '/resume',
-      name: 'Resume',
-      component: Resume
-    },
-    {
-      path: '/portfolio',
-      name: 'Portfolio',
-      component: Portfolio
-    },
-    {
-      path: '/about-me',
-      name: 'About Me',
-      component: AboutMe
-    },
-    {
-      path: '/contact',
-      name: 'Contact',
-      component: Contact
+      path: "/afisha",
+      name: "Афіші",
+      component: Afisha
     }
   ]
-})
+});

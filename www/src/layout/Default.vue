@@ -1,45 +1,41 @@
 <template>
   <div>
-  <header-container :links="links"/>
+    <header-container :links="links" />
     <slot />
-  <footer-container :links="links"/>
+    <footer-container :links="links" />
   </div>
 </template>
 
 <script>
-import HeaderContainer from '../components/Header'
-import FooterContainer from '../components/Footer'
+import HeaderContainer from "../components/Header";
+import FooterContainer from "../components/Footer";
 export default {
-  name: 'Default',
-  data () {
+  name: "Default",
+  data() {
     return {
       links: [
         {
-          path: '/',
-          name: 'Home'
+          path: "/",
+          name: "Головна"
         },
         {
-          path: '/resume',
-          name: 'Resume'
+          path: "/afisha",
+          name: "Афіші"
         },
         {
-          path: '/portfolio',
-          name: 'Portfolio'
+          path: "/about",
+          name: "Про нас"
         },
         {
-          path: '/about-me',
-          name: 'About Me'
-        },
-        {
-          path: '/contact',
-          name: 'Contact'
+          path: "/video",
+          name: "Відео"
         }
       ]
-    }
+    };
   },
   components: {
     HeaderContainer,
     FooterContainer
   }
-}
+};
 </script>

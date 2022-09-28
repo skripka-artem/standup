@@ -1,15 +1,31 @@
 <template>
   <div class="home">
-    <hello />
+    <Slider />
+    <Afisha />
+    <About />
+    <Video />
+    <Comedians />
+    <Contact />
   </div>
 </template>
 
 <script>
-import Hello from '../components/Hello'
+import Slider from "../components/home/Slider";
+import Afisha from "../components/home/Afishi";
+import About from "../components/home/About";
+import Video from "../components/home/Video";
+import Comedians from "../components/home/Comedians";
+import Contact from "../components/home/Contact";
+
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Hello
+    Slider,
+    Afisha,
+    About,
+    Video,
+    Comedians,
+    Contact
   }
-}
+};
 </script>
