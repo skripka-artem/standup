@@ -4,7 +4,7 @@
     <Afisha />
     <About />
     <Video />
-    <Comedians />
+    <Places />
     <Contact />
   </div>
 </template>
@@ -14,7 +14,7 @@ import Slider from "../components/home/Slider";
 import Afisha from "../components/home/Afishi";
 import About from "../components/home/About";
 import Video from "../components/home/Video";
-import Comedians from "../components/home/Comedians";
+import Places from "../components/home/Places";
 import Contact from "../components/home/Contact";
 
 export default {
@@ -24,7 +24,7 @@ export default {
     Afisha,
     About,
     Video,
-    Comedians,
+    Places,
     Contact
   }
 };
