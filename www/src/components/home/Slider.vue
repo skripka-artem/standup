@@ -74,18 +74,18 @@ export default {
       }
     };
   },
-  components: { VueSlickCarousel }
-  // mounted() {
-  //   axios
-  //     .get("https://www.undergroundstandup.com/wp-json/wp/v2/types")
-  //     .then(response => {
-  //       console.log("response");
-  //       console.log(response);
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // }
+  components: { VueSlickCarousel },
+  mounted() {
+    axios
+      .get("http://admin.undergroundstandup.com/wp-json/wp/v2/afisha")
+      .then(response => {
+        console.log("response");
+        console.log(response);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
 };
 </script>
 

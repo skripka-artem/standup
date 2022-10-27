@@ -2,44 +2,22 @@
   <div class="afisha wrapper">
     <p class="afisha__title">Афіша</p>
     <div class="afisha-items">
-      <div class="afisha-item">
-        <img class="afisha-item__img" src="../../assets/img/1.jpg" alt="" />
+      <div class="afisha-item" v-for="item in getListAfisha" :key="item.id">
+        <img
+          class="afisha-item__img"
+          :src="urlImage(item.featured_media)"
+          alt=""
+        />
         <div class="afisha-item-info">
-          <p class="afisha-item__name">Подпольный Стендап в Golden Gate</p>
+          <p class="afisha-item__name">{{ item.title.rendered }}</p>
           <p class="afisha-item__date">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 29.04.2022
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            {{ formatDate(item["afisha-custom-fields"].date[0]) }} в
+            {{ formatTime(item["afisha-custom-fields"].time[0]) }}
           </p>
           <p class="afisha-item__place">
             <i class="fa fa-map-marker" aria-hidden="true"></i>
-            Golden Gate Pub & Restaurant ул. Золотоворотская, 15, Киев
-          </p>
-        </div>
-        <button class="afisha-item__buy">Купити</button>
-      </div>
-      <div class="afisha-item">
-        <img class="afisha-item__img" src="../../assets/img/1.jpg" alt="" />
-        <div class="afisha-item-info">
-          <p class="afisha-item__name">Подпольный Стендап в Golden Gate</p>
-          <p class="afisha-item__date">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 29.04.2022
-          </p>
-          <p class="afisha-item__place">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            Golden Gate Pub & Restaurant ул. Золотоворотская, 15, Киев
-          </p>
-        </div>
-        <button class="afisha-item__buy">Купити</button>
-      </div>
-      <div class="afisha-item">
-        <img class="afisha-item__img" src="../../assets/img/1.jpg" alt="" />
-        <div class="afisha-item-info">
-          <p class="afisha-item__name">Подпольный Стендап в Golden Gate</p>
-          <p class="afisha-item__date">
-            <i class="fa fa-calendar" aria-hidden="true"></i> 29.04.2022
-          </p>
-          <p class="afisha-item__place">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
-            Golden Gate Pub & Restaurant ул. Золотоворотская, 15, Киев
+            {{ item["afisha-custom-fields"].places[0] }}
           </p>
         </div>
         <button class="afisha-item__buy">Купити</button>
@@ -53,14 +31,37 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Afishi",
-  data() {
-    return {
-      afisha: []
-    };
+  created() {
+    this.$store.dispatch("loadAfisha");
   },
-  mounted() {}
+  computed: {
+    ...mapGetters({
+      getAfisha: "getAfisha",
+      getImages: "getImages"
+    }),
+    getListAfisha() {
+      return this.getAfisha.slice(0, 3);
+    }
+  },
+  methods: {
+    formatDate(date) {
+      let day = date.slice(6, 8);
+      let month = date.slice(4, 6);
+      let year = date.slice(0, 4);
+      return `${day}.${month}.${year}`;
+    },
+    formatTime(time) {
+      let h = time.slice(0, 2);
+      let m = time.slice(3, 5);
+      return `${h}:${m}`;
+    },
+    urlImage(id) {
+      return this.getImages.filter(elem => elem.id === id)[0].source_url;
+    }
+  }
 };
 </script>
 

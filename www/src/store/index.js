@@ -8,7 +8,9 @@ export default new Vuex.Store({
   state: {
     playlistArray: [],
     videoArray: [],
-    menu: false
+    menu: false,
+    afisha: [],
+    images: []
   },
   getters: {
     getPlaylist: state => {
@@ -19,9 +21,32 @@ export default new Vuex.Store({
     },
     getMenu: state => {
       return state.menu;
+    },
+    getAfisha: state => {
+      return state.afisha;
+    },
+    getImages: state => {
+      return state.images;
     }
   },
   actions: {
+    async loadImages({ commit }) {
+      let images = await axios.get(
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/media"
+      );
+
+      console.log("images.data");
+      console.log(images.data);
+
+      commit("SET_IMAGES", images.data);
+    },
+    async loadAfisha({ commit }) {
+      let afisha = await axios.get(
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/afisha"
+      );
+
+      commit("SET_AFISHA", afisha.data);
+    },
     async loadPlaylist({ commit }, payload) {
       let playlist = await axios.get(
         "https://content.googleapis.com/youtube/v3/playlists",
@@ -66,6 +91,12 @@ export default new Vuex.Store({
     },
     SET_TOGGLE_MENU(state, action) {
       state.menu = action || [];
+    },
+    SET_AFISHA(state, afisha) {
+      state.afisha = afisha || [];
+    },
+    SET_IMAGES(state, images) {
+      state.images = images || [];
     }
   }
 });

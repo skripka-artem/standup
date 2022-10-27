@@ -26,6 +26,9 @@ export default {
     Video,
     Places,
     Contact
+  },
+  created() {
+    this.$store.dispatch("loadImages");
   }
 };
 </script>
