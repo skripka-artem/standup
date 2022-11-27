@@ -6,6 +6,7 @@ import Afisha from "../page/Afisha";
 Vue.use(Router);
 
 export default new Router({
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -13,7 +14,7 @@ export default new Router({
       component: Home
     },
     {
-      path: "/afisha#",
+      path: "/afisha",
       name: "Афіші",
       component: Afisha
     }
