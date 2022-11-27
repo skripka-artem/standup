@@ -2,104 +2,21 @@
   <div class="places wrapper" id="places">
     <p class="places__title">Місця</p>
     <div class="places-slider">
-      <VueSlickCarousel v-bind="settingsSlider">
-        <div class="places-item">
-          <img
-            class="places-item__img"
-            src="../../assets/img/place.jpg"
-            alt=""
-          />
+      <VueSlickCarousel v-bind="settingsSlider" v-if="this.getPlace.length > 0">
+        <div class="places-item" v-for="item in getListPlaces" :key="item.id">
+          <img class="places-item__img" :src="urlImage(item.featured_media)" />
           <div class="places-item-info">
-            <p class="places-item-info__title">Голден Нейм</p>
-            <p class="places-item-info__address"><span>Адрес:</span> Київ</p>
+            <p class="places-item-info__title">{{ item.title.rendered }}</p>
+            <p class="places-item-info__address">
+              <span>Адрес:</span> {{ item["post-custom-fields"].adress[0] }}
+            </p>
             <a
               href="#"
               class="places-item-info__address places-item-info__address_site"
             >
-              <span>Сай:</span> test.com.ua
+              <span>Сайт:</span> {{ item["post-custom-fields"].site[0] }}
             </a>
-            <div class="places-item-info__map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.5642875630165!2d30.511535215944104!3d50.44921599533455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf7d6ed71c91%3A0xe6974b5a5764d3b9!2sUnderground%20StandUp%20Club!5e0!3m2!1suk!2sua!4v1664105339226!5m2!1suk!2sua"
-                width="100%"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="places-item">
-          <img
-            class="places-item__img"
-            src="../../assets/img/place.jpg"
-            alt=""
-          />
-          <div class="places-item-info">
-            <p class="places-item-info__title">Голден Нейм</p>
-            <p class="places-item-info__address"><span>Адрес:</span> Київ</p>
-            <p class="places-item-info__address places-item-info__address_site">
-              <span>Сайт:</span> test.com.ua
-            </p>
-            <div class="places-item-info__map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.5642875630165!2d30.511535215944104!3d50.44921599533455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf7d6ed71c91%3A0xe6974b5a5764d3b9!2sUnderground%20StandUp%20Club!5e0!3m2!1suk!2sua!4v1664105339226!5m2!1suk!2sua"
-                width="100%"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="places-item">
-          <img
-            class="places-item__img"
-            src="../../assets/img/place.jpg"
-            alt=""
-          />
-          <div class="places-item-info">
-            <p class="places-item-info__title">Голден Нейм</p>
-            <p class="places-item-info__address"><span>Адрес:</span> Київ</p>
-            <p class="places-item-info__address places-item-info__address_site">
-              <span>Сай:</span> test.com.ua
-            </p>
-            <div class="places-item-info__map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.5642875630165!2d30.511535215944104!3d50.44921599533455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf7d6ed71c91%3A0xe6974b5a5764d3b9!2sUnderground%20StandUp%20Club!5e0!3m2!1suk!2sua!4v1664105339226!5m2!1suk!2sua"
-                width="100%"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="places-item">
-          <img
-            class="places-item__img"
-            src="../../assets/img/place.jpg"
-            alt=""
-          />
-          <div class="places-item-info">
-            <p class="places-item-info__title">Голден Нейм</p>
-            <p class="places-item-info__address"><span>Адрес:</span> Київ</p>
-            <p class="places-item-info__address places-item-info__address_site">
-              <span>Сай:</span> test.com.ua
-            </p>
-            <div class="places-item-info__map">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.5642875630165!2d30.511535215944104!3d50.44921599533455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cf7d6ed71c91%3A0xe6974b5a5764d3b9!2sUnderground%20StandUp%20Club!5e0!3m2!1suk!2sua!4v1664105339226!5m2!1suk!2sua"
-                width="100%"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
+            <div class="places-item-info__map" v-html="getMap(item)"></div>
           </div>
         </div>
       </VueSlickCarousel>
@@ -112,6 +29,7 @@ import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 // optional style for arrows & dots
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Places",
@@ -140,7 +58,27 @@ export default {
     };
   },
   components: { VueSlickCarousel },
-  mounted() {}
+  computed: {
+    ...mapGetters({
+      getPlace: "getPlace",
+      getImages: "getImages"
+    }),
+    getListPlaces() {
+      console.log("this.getPlace");
+      console.log(this.getPlace);
+      if (this.getPlace.length > 0) {
+        return this.getPlace;
+      }
+    }
+  },
+  methods: {
+    urlImage(id) {
+      return this.getImages.filter(elem => elem.id === id)[0].source_url;
+    },
+    getMap(item) {
+      return item["post-custom-fields"].map[0];
+    }
+  }
 };
 </script>
 
@@ -286,7 +224,7 @@ export default {
         bottom: 0;
         height: 170px;
 
-        iframe {
+        ::v-deep iframe {
           height: 100%;
         }
       }

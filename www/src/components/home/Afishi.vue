@@ -34,9 +34,6 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Afishi",
-  created() {
-    this.$store.dispatch("loadAfisha");
-  },
   computed: {
     ...mapGetters({
       getAfisha: "getAfisha",

@@ -1,30 +1,26 @@
 <template>
   <div class="about wrapper" id="about">
-    <p class="about__title">Про Нас</p>
-    <div class="about-info">
-      <p>Авторський юмор <span>18+</span></p>
-      <p><span>400+</span> вечірок на рік</p>
-      <p>Такого не покажуть по ТВ</p>
-    </div>
-    <div class="about-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.
-    </div>
+    <p class="about__title">{{ getBlockAbout.title.rendered }}</p>
+    <div v-html="getBlockAbout.content.rendered"></div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "About",
   data() {
     return {};
   },
-  mounted() {}
+  computed: {
+    ...mapGetters({
+      getAboutUs: "getAboutUs"
+    }),
+    getBlockAbout() {
+      return this.getAboutUs[0];
+    }
+  }
 };
 </script>
 
@@ -93,7 +89,7 @@ export default {
     }
   }
 
-  &-info {
+  ::v-deep &-info {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
@@ -124,7 +120,8 @@ export default {
       }
     }
   }
-  &-text {
+
+  ::v-deep &-text {
     font-size: 16px;
     color: $white;
     text-align: center;

@@ -10,7 +10,10 @@ export default new Vuex.Store({
     videoArray: [],
     menu: false,
     afisha: [],
-    images: []
+    images: [],
+    slider: [],
+    aboutUs: [],
+    place: []
   },
   getters: {
     getPlaylist: state => {
@@ -27,6 +30,15 @@ export default new Vuex.Store({
     },
     getImages: state => {
       return state.images;
+    },
+    getSlider: state => {
+      return state.slider;
+    },
+    getAboutUs: state => {
+      return state.aboutUs;
+    },
+    getPlace: state => {
+      return state.place;
     }
   },
   actions: {
@@ -34,9 +46,6 @@ export default new Vuex.Store({
       let images = await axios.get(
         "http://admin.undergroundstandup.com/wp-json/wp/v2/media"
       );
-
-      console.log("images.data");
-      console.log(images.data);
 
       commit("SET_IMAGES", images.data);
     },
@@ -46,6 +55,26 @@ export default new Vuex.Store({
       );
 
       commit("SET_AFISHA", afisha.data);
+    },
+    async loadSlider({ commit }) {
+      let slider = await axios.get(
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/slider"
+      );
+
+      commit("SET_SLIDER", slider.data);
+    },
+    async loadPlace({ commit }) {
+      let place = await axios.get(
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/place"
+      );
+
+      commit("SET_PLACE", place.data);
+    },
+    async loadAboutUs({ commit }) {
+      let item = await axios.get(
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/posts"
+      );
+      commit("SET_ABOUT_US", item.data);
     },
     async loadPlaylist({ commit }, payload) {
       let playlist = await axios.get(
@@ -78,7 +107,6 @@ export default new Vuex.Store({
     },
 
     async toggleMenu({ commit }, payload) {
-      console.log("dddd");
       commit("SET_TOGGLE_MENU", payload);
     }
   },
@@ -97,6 +125,15 @@ export default new Vuex.Store({
     },
     SET_IMAGES(state, images) {
       state.images = images || [];
+    },
+    SET_SLIDER(state, date) {
+      state.slider = date || [];
+    },
+    SET_ABOUT_US(state, date) {
+      state.aboutUs = date || [];
+    },
+    SET_PLACE(state, place) {
+      state.place = place || [];
     }
   }
 });

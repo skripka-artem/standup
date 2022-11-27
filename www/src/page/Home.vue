@@ -29,6 +29,10 @@ export default {
   },
   created() {
     this.$store.dispatch("loadImages");
+    this.$store.dispatch("loadAfisha");
+    this.$store.dispatch("loadSlider");
+    this.$store.dispatch("loadPlace");
+    this.$store.dispatch("loadAboutUs");
   }
 };
 </script>
