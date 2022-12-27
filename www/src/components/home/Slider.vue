@@ -1,6 +1,6 @@
 <template>
   <div class="slider">
-    <VueSlickCarousel v-bind="settingsSlider">
+    <VueSlickCarousel v-if="getListSlider.length > 0" v-bind="settingsSlider">
       <div class="slider-item" v-for="item in getListSlider" :key="item.id">
         <div class="slider-item-info">
           <div class="wrapper">
@@ -50,7 +50,11 @@ export default {
       getImages: "getImages"
     }),
     getListSlider() {
-      return this.getSlider;
+      if (this.getSlider.length > 0) {
+        return this.getSlider;
+      } else {
+        return [];
+      }
     }
   },
   methods: {
@@ -66,7 +70,9 @@ export default {
       return `${h}:${m}`;
     },
     urlImage(id) {
-      return this.getImages.filter(elem => elem.id === id)[0].source_url;
+      if (this.getImages.length > 0) {
+        return this.getImages.filter(elem => elem.id === id)[0].source_url;
+      }
     }
   }
 };

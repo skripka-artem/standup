@@ -13,7 +13,8 @@ export default new Vuex.Store({
     images: [],
     slider: [],
     aboutUs: [],
-    place: []
+    place: [],
+    police: []
   },
   getters: {
     getPlaylist: state => {
@@ -39,19 +40,29 @@ export default new Vuex.Store({
     },
     getPlace: state => {
       return state.place;
+    },
+    getPolice: state => {
+      return state.police;
     }
   },
   actions: {
+    async loadPolice({ commit }) {
+      let police = await axios.get(
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/pages/103"
+      );
+      console.log(police);
+      commit("SET_POLICE", police.data);
+    },
     async loadImages({ commit }) {
       let images = await axios.get(
-        "http://admin.undergroundstandup.com/wp-json/wp/v2/media"
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/media?per_page=100"
       );
 
       commit("SET_IMAGES", images.data);
     },
     async loadAfisha({ commit }) {
       let afisha = await axios.get(
-        "http://admin.undergroundstandup.com/wp-json/wp/v2/afisha"
+        "http://admin.undergroundstandup.com/wp-json/wp/v2/afisha?per_page=100"
       );
 
       commit("SET_AFISHA", afisha.data);
@@ -134,6 +145,9 @@ export default new Vuex.Store({
     },
     SET_PLACE(state, place) {
       state.place = place || [];
+    },
+    SET_POLICE(state, police) {
+      state.police = police || [];
     }
   }
 });

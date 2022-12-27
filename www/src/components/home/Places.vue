@@ -6,7 +6,7 @@
         <div class="places-item" v-for="item in getListPlaces" :key="item.id">
           <img class="places-item__img" :src="urlImage(item.featured_media)" />
           <div class="places-item-info">
-            <p class="places-item-info__title">{{ item.title.rendered }}</p>
+            <p class="places-item-info__title" v-html="item.title.rendered"></p>
             <p class="places-item-info__address">
               <span>Адрес:</span> {{ item["post-custom-fields"].adress[0] }}
             </p>
@@ -64,8 +64,6 @@ export default {
       getImages: "getImages"
     }),
     getListPlaces() {
-      console.log("this.getPlace");
-      console.log(this.getPlace);
       if (this.getPlace.length > 0) {
         return this.getPlace;
       }
@@ -73,7 +71,12 @@ export default {
   },
   methods: {
     urlImage(id) {
-      return this.getImages.filter(elem => elem.id === id)[0].source_url;
+      if (this.getImages.length > 0) {
+        let images = this.getImages.filter(elem => elem.id === id);
+        if (images.length > 0) {
+          return images[0].source_url;
+        }
+      }
     },
     getMap(item) {
       return item["post-custom-fields"].map[0];

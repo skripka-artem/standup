@@ -58,7 +58,12 @@ export default {
       return `${h}:${m}`;
     },
     urlImage(id) {
-      return this.getImages.filter(elem => elem.id === id)[0].source_url;
+      if (this.getImages.length > 0) {
+        let images = this.getImages.filter(elem => elem.id === id);
+        if (images.length > 0) {
+          return images[0].source_url;
+        }
+      }
     }
   }
 };

@@ -1,5 +1,9 @@
 <template>
-  <div class="about wrapper" id="about">
+  <div
+    class="about wrapper"
+    id="about"
+    v-if="getBlockAbout.hasOwnProperty('title')"
+  >
     <p class="about__title">{{ getBlockAbout.title.rendered }}</p>
     <div v-html="getBlockAbout.content.rendered"></div>
   </div>
@@ -18,7 +22,11 @@ export default {
       getAboutUs: "getAboutUs"
     }),
     getBlockAbout() {
-      return this.getAboutUs[0];
+      if (this.getAboutUs.length > 0) {
+        return this.getAboutUs[0];
+      } else {
+        return {};
+      }
     }
   }
 };

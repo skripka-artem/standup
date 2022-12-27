@@ -10,6 +10,9 @@
         <a class="block no-underline product-link" href="/#about">Про нас</a>
         <a class="block no-underline product-link" href="/#video">Відео</a>
         <a class="block no-underline product-link" href="/#comedians">Коміки</a>
+        <a class="block no-underline product-link" href="/privacy-police"
+          >Політика кофеденційності</a
+        >
         <a class="block no-underline product-link" href="/#contact">Контакти</a>
       </nav>
     </div>
@@ -101,7 +104,7 @@ export default {
       }
 
       @media all and (min-width: 1024px) {
-        width: 60%;
+        width: 65%;
       }
 
       .product-link {

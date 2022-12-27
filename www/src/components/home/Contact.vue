@@ -19,8 +19,8 @@
       <div class="сontact-info">
         <div class="сontact-info-item">
           <p>Email:</p>
-          <a href="mailto:undegraundstandap@gmail.com"
-            >undegraundstandap@gmail.com</a
+          <a href="mailto:undergroundstandupkiev@gmail.com"
+            >undergroundstandupkiev@gmail.com</a
           >
         </div>
         <div class="сontact-info-item">
@@ -34,7 +34,7 @@
 
 <script>
 export default {
-  name: "Сontact"
+  name: "Contact"
 };
 </script>
 
