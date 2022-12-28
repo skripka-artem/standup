@@ -1,6 +1,6 @@
 <template>
   <div class="afisha wrapper">
-    <p class="afisha__title">Афіша</p>
+    <h1 class="afisha__title">Афіша</h1>
     <div class="afisha-items">
       <div class="afisha-item" v-for="item in getListAfisha" :key="item.id">
         <img
@@ -31,7 +31,13 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Afisha",
-
+  metaInfo: {
+    title: "Афіша | Підпільний Стендап",
+    meta: [
+      { name: "description", content: "Підпільний Стендап" },
+      { name: "keywords", content: "Підпільний Стендап" }
+    ]
+  },
   created() {
     this.$store.dispatch("loadImages");
     this.$store.dispatch("loadAfisha");

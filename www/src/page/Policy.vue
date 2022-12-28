@@ -1,6 +1,6 @@
 <template>
   <div class="policy wrapper">
-    <p class="policy__title">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</p>
+    <h1 class="policy__title">ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</h1>
     <div
       class="policy-container"
       v-if="this.getPolice.hasOwnProperty('content')"
@@ -14,6 +14,13 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "Policy",
+  metaInfo: {
+    title: "Політика конфеденційності | Підпільний Стендап",
+    meta: [
+      { name: "description", content: "Підпільний Стендап" },
+      { name: "keywords", content: "Підпільний Стендап" }
+    ]
+  },
   created() {
     this.$store.dispatch("loadPolice");
   },

@@ -12,6 +12,13 @@ export default {
   name: "App",
   components: {
     Default
+  },
+  metaInfo: {
+    title: "Підпільний Стендап",
+    meta: [
+      { name: "description", content: "Підпільний Стендап" },
+      { name: "keywords", content: "Підпільний Стендап" }
+    ]
   }
 };
 </script>

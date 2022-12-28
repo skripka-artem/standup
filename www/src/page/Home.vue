@@ -27,6 +27,13 @@ export default {
     Places,
     Contact
   },
+  metaInfo: {
+    title: "Підпільний Стендап",
+    meta: [
+      { name: "description", content: "Підпільний Стендап" },
+      { name: "keywords", content: "Підпільний Стендап" }
+    ]
+  },
   created() {
     this.$store.dispatch("loadImages");
     this.$store.dispatch("loadAfisha");
