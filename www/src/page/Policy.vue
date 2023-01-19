@@ -51,6 +51,13 @@ export default {
   &-container {
     width: 100%;
     margin-top: 60px;
+
+    ::v-deep {
+      p {
+        font-size: 16px;
+        line-height: 1.3;
+      }
+    }
   }
 
   &__title {

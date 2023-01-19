@@ -11,15 +11,15 @@
         <a class="block no-underline product-link" href="/#video">Відео</a>
         <a class="block no-underline product-link" href="/#comedians">Коміки</a>
         <a class="block no-underline product-link" href="/privacy-police"
-          >Політика кофеденційності</a
+          >Політика конфеденційності</a
         >
         <a class="block no-underline product-link" href="/#contact">Контакти</a>
       </nav>
     </div>
     <div class="copyright">
       &copy; 2022
-      <a target="_blank" href="https://www.instagram.com/skripka._.artem/"
-        >Artem Skrypka</a
+      <a target="_blank" href="https://www.instagram.com/undergroundstandupkyiv/"
+        >undergroundstandupkiev</a
       >
     </div>
   </footer>

@@ -10,12 +10,6 @@
             <p class="places-item-info__address">
               <span>Адрес:</span> {{ item["post-custom-fields"].adress[0] }}
             </p>
-            <a
-              href="#"
-              class="places-item-info__address places-item-info__address_site"
-            >
-              <span>Сайт:</span> {{ item["post-custom-fields"].site[0] }}
-            </a>
             <div class="places-item-info__map" v-html="getMap(item)"></div>
           </div>
         </div>

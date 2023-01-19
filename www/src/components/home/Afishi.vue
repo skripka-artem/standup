@@ -20,7 +20,7 @@
             {{ item["afisha-custom-fields"].places[0] }}
           </p>
         </div>
-        <button class="afisha-item__buy">Купити</button>
+        <button @click="buy(item)" class="afisha-item__buy">Купити</button>
       </div>
       <a href="/afisha" class="afisha-item afisha-item_more">
         <span>Дивитися</span><span>всі <i class="fa fa-arrow-right"></i></span
@@ -61,6 +61,12 @@ export default {
         if (images.length > 0) {
           return images[0].source_url;
         }
+      }
+    },
+    buy(item) {
+      let link = item['afisha-custom-fields']['link_to_bye'][0]
+      if (link !== undefined) {
+        window.open(`${link}`, "_blank");
       }
     }
   }
